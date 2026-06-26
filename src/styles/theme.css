@@ -1,0 +1,273 @@
+/* ──────────────────────────────────────────────
+   Design Token Overrides (Teal-Cyan Theme)
+────────────────────────────────────────────── */
+
+body {
+  font-family: 'Outfit', sans-serif !important;
+}
+
+body.dark-mode {
+  --bg: #050505;
+  --surface: #0c0c0c;
+  --surface-2: #121212;
+  --border: rgba(14, 245, 233, 0.12);
+  --border-soft: rgba(255, 255, 255, 0.05);
+  
+  --accent-purple: #0ef5e9;
+  --accent-purple-light: #6bfbf2;
+  --accent-purple-dark: #00b5aa;
+  
+  --accent-cyan: #0ef5e9;
+  --accent-yellow: #ffdb58;
+  --accent-green: #39ff14;
+  --accent-rose: #ff007f;
+  
+  --text: #e0fcfb;
+  --text-muted: #8fa09f;
+  --text-dim: #445554;
+  
+  --font: 'Outfit', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  
+  --shadow-glow: 0 0 40px rgba(14, 245, 233, 0.15);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.7);
+  --shadow-purple: 0 8px 32px rgba(14, 245, 233, 0.2);
+
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14, 245, 233, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0, 181, 170, 0.05), transparent);
+}
+
+body.dark-mode::before {
+  background-image: 
+    linear-gradient(rgba(14, 245, 233, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 245, 233, 0.015) 1px, transparent 1px) !important;
+}
+
+body.light-mode {
+  --bg: #f4f8f8;
+  --surface: #ffffff;
+  --surface-2: #eaf1f1;
+  --border: rgba(0, 181, 170, 0.15);
+  --border-soft: rgba(0, 0, 0, 0.05);
+  
+  --accent-purple: #00b5aa;
+  --accent-purple-light: #0ef5e9;
+  --accent-purple-dark: #008f86;
+  
+  --accent-cyan: #00b5aa;
+  --accent-yellow: #b58d00;
+  --accent-green: #1b854e;
+  --accent-rose: #d01579;
+  
+  --text: #172222;
+  --text-muted: #5b6e6e;
+  --text-dim: #92a5a5;
+  
+  --font: 'Outfit', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  
+  --shadow-glow: 0 0 30px rgba(0, 181, 170, 0.08);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.05);
+  --shadow-purple: 0 8px 32px rgba(0, 181, 170, 0.12);
+
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14, 245, 233, 0.06), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0, 181, 170, 0.03), transparent);
+}
+
+body.light-mode::before {
+  background-image: 
+    linear-gradient(rgba(0, 181, 170, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 181, 170, 0.02) 1px, transparent 1px) !important;
+}
+
+/* ──────────────────────────────────────────────
+   Global Layout & Visual Adjustments
+────────────────────────────────────────────── */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-purple-light) 0%, var(--accent-purple) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(135deg, var(--accent-purple-light) 0%, var(--accent-purple-dark) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* UI custom scrollbar override */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--accent-purple), var(--accent-purple-dark)) !important;
+}
+
+/* Theme Toggle styles */
+.theme-toggle {
+  background: var(--surface-2) !important;
+  color: var(--accent-purple) !important;
+  border: 1px solid var(--border) !important;
+  padding: 0.4rem 0.8rem !important;
+  border-radius: 9999px !important;
+  font-family: var(--font) !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+.theme-toggle:hover {
+  background: var(--accent-purple) !important;
+  color: var(--bg) !important;
+  box-shadow: var(--shadow-glow) !important;
+}
+
+/* ──────────────────────────────────────────────
+   Navbar & Logo Redesign
+────────────────────────────────────────────── */
+
+.navbar {
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.navbar.scrolled {
+  top: 15px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: min(90%, 1200px) !important;
+  height: 64px !important;
+  border-radius: 9999px !important;
+  border: 1px solid var(--border) !important;
+  background: rgba(12, 12, 12, 0.72) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), var(--shadow-glow) !important;
+}
+
+body.light-mode .navbar.scrolled {
+  background: transparent !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05), var(--shadow-glow) !important;
+}
+
+.navbar-inner {
+  height: 100% !important;
+}
+
+.logo-badge {
+  background: linear-gradient(135deg, var(--accent-purple-light), var(--accent-purple)) !important;
+  color: #050505 !important;
+  border-radius: 8px !important;
+  font-weight: 900 !important;
+  box-shadow: var(--shadow-glow) !important;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  background: rgba(14, 245, 233, 0.08) !important;
+  color: var(--accent-purple-light) !important;
+}
+
+body.light-mode .navbar-links a:hover,
+body.light-mode .navbar-links a.active {
+  background: rgba(0, 181, 170, 0.08) !important;
+  color: var(--accent-purple-dark) !important;
+}
+
+/* ──────────────────────────────────────────────
+   Hero Section & Orbs Overrides
+────────────────────────────────────────────── */
+
+.hero {
+  position: relative !important;
+  background-image: linear-gradient(180deg, rgba(5, 5, 5, 0.6) 0%, var(--bg) 100%) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  z-index: 1;
+}
+
+body.light-mode .hero {
+  background-image: linear-gradient(180deg, rgba(244, 248, 248, 0.65) 0%, var(--bg) 100%), url('/hero-bg.png') !important;
+}
+
+.hero-terminal {
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-glow), var(--shadow-card) !important;
+}
+
+.stat-item {
+  border: 1px solid var(--border) !important;
+  background: var(--surface) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+.orb-1 { background: rgba(14, 245, 233, 0.15) !important; }
+.orb-2 { background: rgba(0, 181, 170, 0.12) !important; }
+.orb-3 { background: rgba(14, 245, 233, 0.1) !important; }
+.orb-4 { background: rgba(0, 181, 170, 0.08) !important; }
+.orb-5 { background: rgba(14, 245, 233, 0.06) !important; }
+
+/* ──────────────────────────────────────────────
+   Card, Section & Scrollbar Styles
+────────────────────────────────────────────── */
+
+.glass-card, 
+.about-avatar-wrap,
+.skill-category,
+.project-card,
+.contact-info,
+.contact-form {
+  border: 1px solid var(--border) !important;
+  background: rgba(12, 12, 12, 0.6) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+body.light-mode .glass-card, 
+body.light-mode .about-avatar-wrap,
+body.light-mode .skill-category,
+body.light-mode .project-card,
+body.light-mode .contact-info,
+body.light-mode .contact-form {
+  border: 1px solid var(--border) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+/* Scroll progress bar overrides */
+.scroll-progress {
+  background: linear-gradient(90deg, var(--accent-purple-light), var(--accent-purple)) !important;
+  height: 3px !important;
+}
+
+/* ──────────────────────────────────────────────
+   Centered Minimal Footer Override
+────────────────────────────────────────────── */
+
+.footer-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: 1.5rem !important;
+}
+
+.footer-brand {
+  align-items: center !important;
+}
+
+.footer-links {
+  justify-content: center !important;
+}
+
+.footer-bottom {
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+  text-align: center !important;
+  justify-content: center !important;
+}
+
