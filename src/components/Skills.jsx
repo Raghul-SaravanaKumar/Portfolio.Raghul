@@ -15,7 +15,7 @@ import {
   SiGit,
   SiGithub,
   SiDocker,
-  SiVisualstudiocode,
+
   SiIntellijidea,
 
   SiRender,
