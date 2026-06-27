@@ -17,7 +17,7 @@ import {
   SiDocker,
   SiVisualstudiocode,
   SiIntellijidea,
-  SiEclipse,
+
   SiRender,
   SiRailway,
   SiVercel,
