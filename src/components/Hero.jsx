@@ -117,7 +117,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="hero" id="home">
+    <section className="hero" id="home" style={{ background: 'rgba(13,13,28,0.4)' }}>
       <div className="hero-bg">
         <div className="orb orb-1" />
         <div className="orb orb-2" />

@@ -17,7 +17,7 @@ import {
   SiDocker,
   SiIntellijidea,
   SiVisualstudiocode,
-  SiEclipse,
+  // SiEclipse removed due to missing export
   SiRender,
   SiRailway,
   SiVercel,
@@ -26,7 +26,7 @@ import {
   SiSqlite,
   SiC,
 } from 'react-icons/si';
-import { FaJava, FaCss3Alt } from 'react-icons/fa';
+import { FaJava, FaCss3Alt, FaTools } from 'react-icons/fa';
 import { useInView } from '../hooks/useInView';
 
 const CATEGORIES = [
@@ -45,7 +45,7 @@ const CATEGORIES = [
   },
   {
     icon: '⚡',
-    title: 'Frameworks & Libraries',
+    title: 'Frameworks \u0026 Libraries',
     color: '#22d3ee',
     items: [
       { name: 'React', icon: <SiReact />, color: '#61dafb' },
@@ -69,7 +69,7 @@ const CATEGORIES = [
   },
   {
     icon: '🛠️',
-    title: 'Tools & Version Control',
+    title: 'Tools \u0026 Version Control',
     color: '#fb7185',
     items: [
       { name: 'Git', icon: <SiGit />, color: '#f05032' },
@@ -77,7 +77,7 @@ const CATEGORIES = [
       { name: 'Docker', icon: <SiDocker />, color: '#0db7ed' },
       { name: 'VS Code', icon: <SiVisualstudiocode />, color: '#007ACC' },
       { name: 'IntelliJ IDEA', icon: <SiIntellijidea />, color: '#000000' },
-      { name: 'Eclipse', icon: <SiEclipse />, color: '#2c2255' },
+      { name: 'Eclipse', icon: <FaTools />, color: '#2c2255' },
     ],
   },
   {
@@ -92,6 +92,8 @@ const CATEGORIES = [
     ],
   },
 ];
+
+
 
 export default function Skills() {
   const [ref, inView] = useInView();
