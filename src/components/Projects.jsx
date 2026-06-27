@@ -74,8 +74,8 @@ const PROJECTS = [
     name: 'SubZy',
     emoji: '🛠️',
     description:
-      'A utility platform for ... (placeholder description).',
-    lang: 'Node.js / Express',
+      'Built using React.js, FastAPI, MongoDB & Brevo API.',
+    lang: 'React.js / FastAPI / MongoDB / Brevo API',
     langColor: '#68d391',
     github: 'https://github.com/Raghul1815/SubZy',
     live: '',

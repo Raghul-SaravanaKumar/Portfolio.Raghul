@@ -15,9 +15,9 @@ import {
   SiGit,
   SiGithub,
   SiDocker,
-
   SiIntellijidea,
-
+  SiVisualstudiocode,
+  SiEclipse,
   SiRender,
   SiRailway,
   SiVercel,
@@ -48,8 +48,11 @@ const CATEGORIES = [
     title: 'Frameworks & Libraries',
     color: '#22d3ee',
     items: [
+      { name: 'React', icon: <SiReact />, color: '#61dafb' },
       { name: 'Bootstrap', icon: <SiBootstrap />, color: '#7952b3' },
       { name: 'Flask', icon: <SiFlask />, color: '#aaaaaa' },
+      { name: 'Spring Boot', icon: <SiSpringboot />, color: '#6db33f' },
+      { name: 'FastAPI', icon: <SiFastapi />, color: '#009688' },
     ],
   },
   {
@@ -57,7 +60,11 @@ const CATEGORIES = [
     title: 'Databases',
     color: '#4ade80',
     items: [
-      { name: 'SQL', icon: <SiSqlite />, color: '#003b57' },
+      { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248' },
+      { name: 'PostgreSQL', icon: <SiPostgresql />, color: '#336791' },
+      { name: 'MySQL', icon: <SiMysql />, color: '#4479A1' },
+      { name: 'SQLite', icon: <SiSqlite />, color: '#003b57' },
+      { name: 'Firebase', icon: <SiFirebase />, color: '#FFCA28' },
     ],
   },
   {
@@ -67,6 +74,21 @@ const CATEGORIES = [
     items: [
       { name: 'Git', icon: <SiGit />, color: '#f05032' },
       { name: 'GitHub', icon: <SiGithub />, color: '#e0e0e0' },
+      { name: 'Docker', icon: <SiDocker />, color: '#0db7ed' },
+      { name: 'VS Code', icon: <SiVisualstudiocode />, color: '#007ACC' },
+      { name: 'IntelliJ IDEA', icon: <SiIntellijidea />, color: '#000000' },
+      { name: 'Eclipse', icon: <SiEclipse />, color: '#2c2255' },
+    ],
+  },
+  {
+    icon: '☁️',
+    title: 'Cloud',
+    color: '#6366f1',
+    items: [
+      { name: 'Render', icon: <SiRender />, color: '#6748bb' },
+      { name: 'Railway', icon: <SiRailway />, color: '#f26961' },
+      { name: 'Vercel', icon: <SiVercel />, color: '#00c7b7' },
+      { name: 'Netlify', icon: <SiNetlify />, color: '#2366d1' },
     ],
   },
 ];
@@ -174,7 +196,7 @@ export default function Skills() {
               </motion.div>
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div> 
       </div>
     </section>
   );
