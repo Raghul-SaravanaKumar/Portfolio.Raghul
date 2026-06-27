@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import AnimatedDog from './AnimatedDog';
+
 import FloatingIcons from './FloatingIcons';
 import MagneticButton from './MagneticButton';
 
@@ -239,7 +239,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3, type: 'spring', stiffness: 120 }}
               style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.2rem' }}
             >
-              <AnimatedDog />
+
             </motion.div>
 
             {/* Terminal below dog — 3D tilt */}

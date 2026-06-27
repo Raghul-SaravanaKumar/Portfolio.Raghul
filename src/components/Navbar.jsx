@@ -94,17 +94,7 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <button 
-                className="theme-toggle" 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleTheme();
-                }}
-                aria-label="Toggle Theme"
-                title="Toggle Theme"
-              >
-                {isDark ? '☀️ Light' : '🌙 Dark'}
-              </button>
+            {/* Theme toggle button removed */}
             </li>
           </ul>
 

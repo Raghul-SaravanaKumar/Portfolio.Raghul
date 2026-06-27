@@ -41,8 +41,8 @@ const CONTACT_DETAILS = [
     id: 'contact-email',
     icon: <FiMail />,
     label: 'Email',
-    value: 'raghullingesh58@gmail.com',
-    href: 'mailto:raghullingesh58@gmail.com',
+    value: 'iamraghul18@gmail.com',
+    href: 'mailto:iamraghul18@gmail.com',
   },
   {
     id: 'contact-phone',
