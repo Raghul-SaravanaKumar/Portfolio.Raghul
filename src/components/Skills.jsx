@@ -16,7 +16,7 @@ import {
   SiGithub,
   SiDocker,
   SiIntellijidea,
-  SiVisualstudiocode,
+  SiVscode,
   // SiEclipse removed due to missing export
   SiRender,
   SiRailway,
