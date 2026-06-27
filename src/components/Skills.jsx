@@ -16,7 +16,7 @@ import {
   SiGithub,
   SiDocker,
   SiIntellijidea,
-  SiVscode,
+
   // SiEclipse removed due to missing export
   SiRender,
   SiRailway,
@@ -26,6 +26,7 @@ import {
   SiSqlite,
   SiC,
 } from 'react-icons/si';
+import { SiVscode } from 'react-icons/vsc';
 import { FaJava, FaCss3Alt, FaTools } from 'react-icons/fa';
 import { useInView } from '../hooks/useInView';
 
