@@ -57,6 +57,45 @@ const PROJECTS = [
     featured: false,
     accentColor: '#4ade80',
   },
+  {
+    name: 'Nesamani – The Contractor',
+    emoji: '🏗️',
+    description:
+      'A contractor-service management platform enabling job posting and service requests.',
+    lang: 'Java / Spring Boot / HTML / CSS / JS',
+    langColor: '#e44d26',
+    github: 'https://github.com/Raghul1815/Nesamani',
+    live: 'https://nesamani.example.com/',
+    tags: ['Java', 'Spring Boot', 'HTML', 'CSS', 'JavaScript'],
+    featured: false,
+    accentColor: '#f97316',
+  },
+  {
+    name: 'SubZy',
+    emoji: '🛠️',
+    description:
+      'A utility platform for ... (placeholder description).',
+    lang: 'Node.js / Express',
+    langColor: '#68d391',
+    github: 'https://github.com/Raghul1815/SubZy',
+    live: '',
+    tags: ['Node.js', 'Express'],
+    featured: false,
+    accentColor: '#34d399',
+  },
+  {
+    name: 'CyberShield AI',
+    emoji: '🛡️',
+    description:
+      'AI-powered cybersecurity analysis platform.',
+    lang: 'Python / FastAPI',
+    langColor: '#3b84c4',
+    github: 'https://github.com/Raghul1815/CyberShield',
+    live: '',
+    tags: ['Python', 'FastAPI', 'AI', 'Security'],
+    featured: false,
+    accentColor: '#ec4899',
+  },
 ];
 
 function ProjectCard({ proj, index }) {
