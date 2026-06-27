@@ -75,7 +75,7 @@ const CATEGORIES = [
       { name: 'Git', icon: <SiGit />, color: '#f05032' },
       { name: 'GitHub', icon: <SiGithub />, color: '#e0e0e0' },
       { name: 'Docker', icon: <SiDocker />, color: '#0db7ed' },
-      { name: 'VS Code', icon: <SiVisualstudiocode />, color: '#007ACC' },
+      { name: 'VS Code', icon: <SiVscode />, color: '#007ACC' },
       { name: 'IntelliJ IDEA', icon: <SiIntellijidea />, color: '#000000' },
       { name: 'Eclipse', icon: <FaTools />, color: '#2c2255' },
     ],
