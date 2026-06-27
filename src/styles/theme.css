@@ -225,6 +225,7 @@ body.light-mode .hero {
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   box-shadow: var(--shadow-card) !important;
+  border-radius: 16px;
 }
 
 body.light-mode .glass-card, 
@@ -233,7 +234,7 @@ body.light-mode .skill-category,
 body.light-mode .project-card,
 body.light-mode .contact-info,
 body.light-mode .contact-form {
-  border: 1px solid var(--border) !important;
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.8) !important;
   box-shadow: var(--shadow-card) !important;
 }

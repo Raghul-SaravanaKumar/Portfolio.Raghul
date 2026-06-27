@@ -128,9 +128,9 @@ export default function Contact() {
     const mailBody =
       `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`;
     window.open(
-      `mailto:raghullingesh58@gmail.com?subject=${encodeURIComponent(
-        form.subject || `Portfolio message from ${form.name}`
-      )}&body=${encodeURIComponent(mailBody)}`,
+        `mailto:iamraghul18@gmail.com?subject=${encodeURIComponent(
+          form.subject || `Portfolio message from ${form.name}`
+        )}\u0026body=${encodeURIComponent(mailBody)}`,
       '_blank'
     );
     setStatus('success');
