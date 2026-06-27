@@ -1,7 +1,30 @@
 import { motion } from 'framer-motion';
 import {
-  SiPython, SiJavascript, SiHtml5, SiCss,
-  SiFlask, SiGit, SiBootstrap, SiGithub, SiSqlite, SiC
+  SiPython,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiReact,
+  SiSpringboot,
+  SiFastapi,
+  SiFlask,
+  SiMongodb,
+  SiPostgresql,
+  SiMysql,
+  SiFirebase,
+  SiGit,
+  SiGithub,
+  SiDocker,
+  SiVisualstudiocode,
+  SiIntellijidea,
+  SiEclipse,
+  SiRender,
+  SiRailway,
+  SiVercel,
+  SiNetlify,
+  SiBootstrap,
+  SiSqlite,
+  SiC,
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 import { useInView } from '../hooks/useInView';
