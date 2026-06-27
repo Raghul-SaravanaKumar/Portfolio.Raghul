@@ -3,7 +3,7 @@ import {
   SiPython,
   SiJavascript,
   SiHtml5,
-  SiCss3,
+  // SiCss3 removed as not available
   SiReact,
   SiSpringboot,
   SiFastapi,
@@ -26,7 +26,7 @@ import {
   SiSqlite,
   SiC,
 } from 'react-icons/si';
-import { FaJava } from 'react-icons/fa';
+import { FaJava, FaCss3Alt } from 'react-icons/fa';
 import { useInView } from '../hooks/useInView';
 
 const CATEGORIES = [
@@ -40,7 +40,7 @@ const CATEGORIES = [
       { name: 'Python', icon: <SiPython />, color: '#3b84c4' },
       { name: 'JavaScript', icon: <SiJavascript />, color: '#f7df1e' },
       { name: 'HTML5', icon: <SiHtml5 />, color: '#e44d26' },
-      { name: 'CSS3', icon: <SiCss />, color: '#264de4' },
+      { name: 'CSS3', icon: <FaCss3Alt />, color: '#264de4' },
     ],
   },
   {
