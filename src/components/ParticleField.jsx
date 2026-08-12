@@ -22,8 +22,9 @@ export default function ParticleField() {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
     };
+    const onMouseLeave = () => { mouse.x = null; mouse.y = null; };
     window.addEventListener('mousemove', onMouse);
-    window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+    window.addEventListener('mouseleave', onMouseLeave);
 
     const count = 80;
     const CONNECT_DIST = 130;
@@ -117,6 +118,7 @@ export default function ParticleField() {
       cancelAnimationFrame(animFrame);
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', onMouse);
+      window.removeEventListener('mouseleave', onMouseLeave);
     };
   }, []);
 
