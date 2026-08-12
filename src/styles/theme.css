@@ -13,11 +13,11 @@ body.dark-mode {
   --border: rgba(14, 245, 233, 0.12);
   --border-soft: rgba(255, 255, 255, 0.05);
   
-  --accent-purple: #0ef5e9;
-  --accent-purple-light: #6bfbf2;
-  --accent-purple-dark: #00b5aa;
+  --accent-purple: #06b6d4;
+  --accent-purple-light: #7dd3fc;
+  --accent-purple-dark: #0891b2;
   
-  --accent-cyan: #0ef5e9;
+  --accent-cyan: #06b6d4;
   --accent-yellow: #ffdb58;
   --accent-green: #39ff14;
   --accent-rose: #ff007f;
@@ -29,14 +29,14 @@ body.dark-mode {
   --font: 'Outfit', sans-serif;
   --mono: 'JetBrains Mono', monospace;
   
-  --shadow-glow: 0 0 40px rgba(14, 245, 233, 0.15);
+  --shadow-glow: 0 0 40px rgba(6, 182, 212, 0.15);
   --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.7);
-  --shadow-purple: 0 8px 32px rgba(14, 245, 233, 0.2);
+  --shadow-purple: 0 8px 32px rgba(6, 182, 212, 0.2);
 
   background-color: var(--bg);
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14, 245, 233, 0.12), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0, 181, 170, 0.05), transparent);
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(6, 182, 212, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(8, 145, 178, 0.05), transparent);
 }
 
 body.dark-mode::before {
@@ -149,7 +149,9 @@ body.light-mode::before {
 }
 
 body.light-mode .navbar.scrolled {
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05), var(--shadow-glow) !important;
 }
 
@@ -218,7 +220,6 @@ body.light-mode .hero {
 .about-avatar-wrap,
 .skill-category,
 .project-card,
-.contact-info,
 .contact-form {
   border: 1px solid var(--border) !important;
   background: rgba(12, 12, 12, 0.6) !important;
@@ -232,7 +233,6 @@ body.light-mode .glass-card,
 body.light-mode .about-avatar-wrap,
 body.light-mode .skill-category,
 body.light-mode .project-card,
-body.light-mode .contact-info,
 body.light-mode .contact-form {
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.8) !important;

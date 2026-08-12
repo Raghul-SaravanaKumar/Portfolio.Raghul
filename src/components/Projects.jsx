@@ -142,10 +142,6 @@ function ProjectCard({ proj, index }) {
       {/* Colored top stripe */}
       <div className="project-stripe" style={{ background: proj.accentColor }} />
 
-      {proj.featured && (
-        <span className="project-badge">Featured</span>
-      )}
-
       <div className="project-header">
         <motion.div
           className="project-icon project-icon-v2"
@@ -185,24 +181,29 @@ function ProjectCard({ proj, index }) {
         </div>
       </div>
 
-      <div className="project-name">{proj.name}</div>
-      <div className="project-desc">{proj.description}</div>
+      <div className="project-body" style={{ marginTop: '0.8rem' }}>
+        {proj.featured && (
+          <span className="project-badge">Featured</span>
+        )}
+        <div className="project-name">{proj.name}</div>
+        <div className="project-desc">{proj.description}</div>
 
-      <div className="project-tags">
-        {proj.tags.map((tag, i) => (
-          <motion.span
-            key={tag}
-            className="project-tag project-tag-v2"
-            style={{ '--tag-color': proj.accentColor }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.08 + i * 0.04 }}
-            whileHover={{ scale: 1.1 }}
-          >
-            {tag}
-          </motion.span>
-        ))}
+        <div className="project-tags">
+          {proj.tags.map((tag, i) => (
+            <motion.span
+              key={tag}
+              className="project-tag project-tag-v2"
+              style={{ '--tag-color': proj.accentColor }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.08 + i * 0.04 }}
+              whileHover={{ scale: 1.1 }}
+            >
+              {tag}
+            </motion.span>
+          ))}
+        </div>
       </div>
 
       <div className="project-footer">
