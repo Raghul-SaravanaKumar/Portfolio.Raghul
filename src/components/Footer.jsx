@@ -27,7 +27,7 @@ export default function Footer() {
               Raghul S
             </div>
             <p className="footer-tagline">
-              Fuelled by curiosity, driven by code ✨
+              Toppers are running on outdated OS. We just jailbroke the system and installed our own knowledge base⚡
             </p>
           </div>
 
