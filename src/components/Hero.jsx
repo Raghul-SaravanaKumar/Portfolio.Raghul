@@ -55,14 +55,19 @@ function useRoleSwitcher(roles, interval = 2800) {
   const [fade, setFade] = useState(true);
 
   useEffect(() => {
+    // Track inner timeout so it can be cancelled on unmount
+    let innerT;
     const timer = setInterval(() => {
       setFade(false);
-      setTimeout(() => {
+      innerT = setTimeout(() => {
         setIndex(i => (i + 1) % roles.length);
         setFade(true);
       }, 350);
     }, interval);
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+      clearTimeout(innerT);
+    };
   }, [roles.length, interval]);
 
   return { role: roles[index], fade };
@@ -230,19 +235,9 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── RIGHT: Dog mascot + Terminal prompt ── */}
+          {/* ── RIGHT: Terminal prompt ── */}
           <div className="hero-visual">
-            {/* Animated dog mascot */}
-            <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3, type: 'spring', stiffness: 120 }}
-              style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.2rem' }}
-            >
-
-            </motion.div>
-
-            {/* Terminal below dog — 3D tilt */}
+            {/* Terminal — 3D tilt */}
             <TiltCard className="glass-card hero-terminal tilt-card" intensity={8}>
               <div className="terminal-header">
                 <span className="term-dot term-dot-r" />

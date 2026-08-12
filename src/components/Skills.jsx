@@ -26,7 +26,7 @@ import {
   SiSqlite,
   SiC,
 } from 'react-icons/si';
-import { SiVscode } from 'react-icons/vsc';
+import { VscVscode } from 'react-icons/vsc';
 import { FaJava, FaCss3Alt, FaTools } from 'react-icons/fa';
 import { useInView } from '../hooks/useInView';
 
@@ -76,7 +76,7 @@ const CATEGORIES = [
       { name: 'Git', icon: <SiGit />, color: '#f05032' },
       { name: 'GitHub', icon: <SiGithub />, color: '#e0e0e0' },
       { name: 'Docker', icon: <SiDocker />, color: '#0db7ed' },
-      { name: 'VS Code', icon: <SiVscode />, color: '#007ACC' },
+      { name: 'VS Code', icon: <VscVscode />, color: '#007ACC' },
       { name: 'IntelliJ IDEA', icon: <SiIntellijidea />, color: '#000000' },
       { name: 'Eclipse', icon: <FaTools />, color: '#2c2255' },
     ],
@@ -172,7 +172,7 @@ export default function Skills() {
                 className="skill-badges"
                 variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }}
               >
-                {cat.items.map((item) => (
+                {cat.items.map((item, badgeIdx) => (
                   <motion.span
                     key={item.name}
                     className="skill-badge skill-badge-hover"
@@ -189,7 +189,7 @@ export default function Skills() {
                     <motion.span
                       style={{ color: item.color }}
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 8, repeat: Infinity, ease: 'linear', delay: Math.random() * 3 }}
+                      transition={{ duration: 8, repeat: Infinity, ease: 'linear', delay: badgeIdx * 0.4 }}
                     >
                       {item.icon}
                     </motion.span>

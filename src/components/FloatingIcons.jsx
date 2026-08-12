@@ -37,9 +37,9 @@ export default function FloatingIcons() {
       className="floating-icons-container"
       aria-hidden="true"
     >
-      {RANDOMIZED_ICONS.map((item, i) => (
+      {RANDOMIZED_ICONS.map((item) => (
         <span
-          key={i}
+          key={item.icon}
           className="fi-icon"
           style={item.style}
         >

@@ -639,12 +639,8 @@ ul { list-style: none; }
   background-clip: text;
   font-weight: 700;
   white-space: nowrap;
-  animation: roleSlide 8s steps(1) infinite;
 }
 
-@keyframes roleSlide {
-  0%   { content: 'Flutter Developer'; }
-}
 
 .hero-sub {
   font-size: clamp(0.88rem, 2vw, 1.1rem);

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import { useInView } from '../hooks/useInView';
 import { useCallback, useRef } from 'react';
@@ -65,7 +65,7 @@ const PROJECTS = [
     lang: 'Java / Spring Boot / HTML / CSS / JS',
     langColor: '#e44d26',
     github: 'https://github.com/Raghul1815/Nesamani',
-    live: 'https://nesamani.example.com/',
+    live: '',  // No live deployment yet
     tags: ['Java', 'Spring Boot', 'HTML', 'CSS', 'JavaScript'],
     featured: false,
     accentColor: '#f97316',
@@ -79,7 +79,7 @@ const PROJECTS = [
     langColor: '#68d391',
     github: 'https://github.com/Raghul1815/SubZy',
     live: '',
-    tags: ['Node.js', 'Express'],
+    tags: ['React.js', 'FastAPI', 'MongoDB', 'Brevo API'],
     featured: false,
     accentColor: '#34d399',
   },
@@ -142,16 +142,7 @@ function ProjectCard({ proj, index }) {
       {/* Colored top stripe */}
       <div className="project-stripe" style={{ background: proj.accentColor }} />
 
-      {proj.hackathonWinner && (
-        <motion.span
-          className="project-badge hackathon"
-          animate={{ scale: [1, 1.08, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          🏆 Hackathon Winner
-        </motion.span>
-      )}
-      {proj.featured && !proj.hackathonWinner && (
+      {proj.featured && (
         <span className="project-badge">Featured</span>
       )}
 
@@ -264,7 +255,7 @@ export default function Projects() {
           transition={{ delay: 0.6 }}
         >
           <motion.a
-            href="https://github.com/Raghul1815"
+            href="https://github.com/Raghul-SaravanaKumar"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-outline"

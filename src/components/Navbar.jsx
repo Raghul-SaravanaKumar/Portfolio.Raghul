@@ -1,5 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
+import { useState, useEffect } from 'react';
 
 const links = [
   { label: 'About', href: '#about' },
@@ -13,7 +12,6 @@ export default function Navbar() {
   const [progress, setProgress] = useState(0);
   const [active, setActive] = useState('#home');
   const [menuOpen, setMenuOpen] = useState(false);
-  const { isDark, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     const onScroll = () => {
@@ -92,9 +90,6 @@ export default function Navbar() {
               >
                 Hire Me ✨
               </a>
-            </li>
-            <li>
-            {/* Theme toggle button removed */}
             </li>
           </ul>
 

@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2025 Raghul S · Built with <span className="footer-heart">♥</span> using Vite + React</span>
+          <span>© {new Date().getFullYear()} Raghul S · Built with <span className="footer-heart">♥</span> using Vite + React</span>
           <span style={{ color: 'var(--text-dim)' }}>Designed &amp; developed by Raghul S</span>
         </div>
       </div>

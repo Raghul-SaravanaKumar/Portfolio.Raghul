@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useLayoutEffect } from 'react';
 
 export const ThemeContext = createContext({
   isDark: true,
@@ -9,7 +9,7 @@ export const ThemeContext = createContext({
 export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const className = isDark ? 'dark-mode' : 'light-mode';
     document.body.classList.remove('dark-mode', 'light-mode');
     document.body.classList.add(className);
