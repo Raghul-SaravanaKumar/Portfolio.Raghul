@@ -212,7 +212,7 @@ export default function Contact() {
             {/* Availability badge */}
             <div className="contact-availability">
               <span className="contact-avail-dot" />
-              <span>Available for internships &amp; freelance work</span>
+              <span>Available for internships</span>
             </div>
           </motion.div>
 
