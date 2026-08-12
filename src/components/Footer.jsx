@@ -27,9 +27,27 @@ export default function Footer() {
               }}>RS</div>
               Raghul S
             </div>
-            <p className="footer-tagline">
-              Toppers are running on outdated OS. We just jailbroke the system and installed our own knowledge base <AppleEmoji emoji="⚡" />
-            </p>
+            <div style={{
+              fontFamily: 'var(--mono)',
+              fontSize: '0.8rem',
+              lineHeight: '1.65',
+              color: 'var(--accent-green)',
+              background: 'rgba(57, 255, 20, 0.02)',
+              border: '1px solid rgba(57, 255, 20, 0.12)',
+              borderRadius: '10px',
+              padding: '0.8rem 1.1rem',
+              marginTop: '1.1rem',
+              textAlign: 'left',
+              maxWidth: '480px',
+              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(57, 255, 20, 0.03)',
+              borderLeft: '3px solid var(--accent-green)',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.4rem', fontSize: '0.68rem', color: 'rgba(57, 255, 20, 0.6)', fontWeight: 700, letterSpacing: '0.08em' }}>
+                <span>[KERNEL_STATUS]: CRACKED</span>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-green)', boxShadow: '0 0 6px var(--accent-green)' }} />
+              </div>
+              <span style={{ color: '#fff' }}>Toppers are running on outdated OS.</span> We just jailbroke the system and installed our own knowledge base <AppleEmoji emoji="⚡" />
+            </div>
           </div>
 
           <div className="footer-links">
