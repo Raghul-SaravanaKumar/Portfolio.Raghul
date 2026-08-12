@@ -37,6 +37,21 @@ export default function Footer() {
       }} />
 
       <div className="container">
+        {/* Technical Section Identifier */}
+        <div style={{
+          fontSize: '0.72rem',
+          color: 'var(--accent-green)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          marginBottom: '2rem',
+          opacity: 0.65,
+          letterSpacing: '0.12em',
+          fontWeight: 700,
+        }}>
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent-green)', boxShadow: '0 0 6px var(--accent-green)' }} />
+          <span>PORT_TERMINATION: [SYS_SHUTDOWN_0x7F]</span>
+        </div>
         
         {/* Main Dashboard Layout */}
         <div style={{

@@ -9,13 +9,13 @@ export default function JailbreakText() {
   const [showEmoji, setShowEmoji] = useState(false);
   const [sparks, setSparks] = useState([]);
 
-  // Slowed down typewriter speed (65ms per character)
+  // Slower typing speed (110ms per character) for a relaxed premium terminal build-up
   useEffect(() => {
     let t;
     if (typedText.length < fullText.length) {
       t = setTimeout(() => {
         setTypedText(fullText.slice(0, typedText.length + 1));
-      }, 65);
+      }, 110);
     } else {
       t = setTimeout(() => {
         setIsBurning(true);
@@ -34,8 +34,8 @@ export default function JailbreakText() {
     const interval = setInterval(() => {
       const id = Math.random();
       const left = Math.floor(Math.random() * 90) + 5;
-      const size = Math.random() * 3 + 2; // Sleek spark sizes
-      const duration = Math.random() * 1.0 + 0.7; // Drift duration
+      const size = Math.random() * 3 + 2;
+      const duration = Math.random() * 1.0 + 0.7;
       
       setSparks((prev) => [...prev.slice(-20), { id, left, size, duration }]);
     }, 150);
@@ -75,12 +75,12 @@ export default function JailbreakText() {
         </AnimatePresence>
       </div>
 
-      {/* Reworked styling: Keep the clean coder monospace font at all times */}
+      {/* Reworked styling: Apple iOS Developer Monospace font stack */}
       <span 
         className={isBurning ? 'fire-flicker' : ''}
         style={{ 
           color: isBurning ? '#fff' : 'var(--text-muted)',
-          fontFamily: 'var(--mono), SFMono-Regular, Consolas, monospace',
+          fontFamily: '"SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, monospace',
           fontWeight: isBurning ? 700 : 500,
           letterSpacing: isBurning ? '0.01em' : '0',
           transition: 'font-weight 0.4s ease, letter-spacing 0.4s ease, color 0.4s ease',
