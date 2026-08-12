@@ -19,9 +19,9 @@ const achievements = [
 const infoItems = [
   { label: 'Location', value: 'Erode, Tamilnadu, India 🇮🇳' },
   { label: 'Degree', value: 'B.E CSE (2023–2027)' },
-  { label: 'College', value: 'Shree Venkateshwara Hi-Tech' },
+  { label: 'College', value: 'Shree Venkateshwara Hi-Tech Engineering College' },
   { label: 'Email', value: 'iamraghul18@gmail.com' },
-  { label: 'GitHub', value: '@Raghul-SaravanaKumar' },
+  { label: 'GitHub', value: 'Raghul-SaravanaKumar' },
   { label: 'Languages', value: 'Tamil, English' },
   {
     label: 'Resume',
