@@ -34,8 +34,8 @@ export default function JailbreakText() {
     const interval = setInterval(() => {
       const id = Math.random();
       const left = Math.floor(Math.random() * 90) + 5;
-      const size = Math.random() * 4 + 2;
-      const duration = Math.random() * 1.2 + 0.8;
+      const size = Math.random() * 3 + 2; // Sleek spark sizes
+      const duration = Math.random() * 1.0 + 0.7; // Drift duration
       
       setSparks((prev) => [...prev.slice(-20), { id, left, size, duration }]);
     }, 150);
@@ -53,8 +53,8 @@ export default function JailbreakText() {
               key={spark.id}
               initial={{ y: 5, x: 0, opacity: 0.8, scale: 1 }}
               animate={{ 
-                y: -40 - Math.random() * 30,
-                x: (Math.random() - 0.5) * 20,
+                y: -35 - Math.random() * 25,
+                x: (Math.random() - 0.5) * 15,
                 opacity: 0,
                 scale: 0.4
               }}
@@ -75,20 +75,15 @@ export default function JailbreakText() {
         </AnimatePresence>
       </div>
 
-      {/* Font morph container */}
+      {/* Reworked styling: Keep the clean coder monospace font at all times */}
       <span 
         className={isBurning ? 'fire-flicker' : ''}
         style={{ 
-          color: isBurning ? '#fff' : '#c9d1d9',
-          // Morph font family & styling on burn ignition
-          fontFamily: isBurning 
-            ? "'Anton', 'Outfit', sans-serif" 
-            : "var(--mono), SFMono-Regular, monospace",
-          fontWeight: isBurning ? 900 : 400,
-          textTransform: isBurning ? 'uppercase' : 'none',
-          letterSpacing: isBurning ? '0.04em' : '0',
-          fontSize: isBurning ? '0.85rem' : '0.78rem',
-          transition: 'font-family 0.6s ease, font-weight 0.6s ease, text-transform 0.6s ease, letter-spacing 0.6s ease, color 0.5s ease',
+          color: isBurning ? '#fff' : 'var(--text-muted)',
+          fontFamily: 'var(--mono), SFMono-Regular, Consolas, monospace',
+          fontWeight: isBurning ? 700 : 500,
+          letterSpacing: isBurning ? '0.01em' : '0',
+          transition: 'font-weight 0.4s ease, letter-spacing 0.4s ease, color 0.4s ease',
           display: 'inline',
           position: 'relative',
           zIndex: 2,
