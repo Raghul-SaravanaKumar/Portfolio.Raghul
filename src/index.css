@@ -707,6 +707,7 @@ ul { list-style: none; }
 .term-output { color: var(--text-muted); padding-left: 1.2rem; }
 .term-green { color: var(--accent-green); }
 .term-yellow { color: var(--accent-yellow); }
+.term-cyan { color: var(--accent-purple-light); }
 .term-cursor {
   display: inline-block;
   width: 8px; height: 14px;
@@ -2828,5 +2829,13 @@ body::before {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: textShimmer 5s linear infinite;
+}
+
+/* ── typing cursor animation ── */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.typing-cursor {
+  animation: blink 0.8s step-end infinite;
 }
 

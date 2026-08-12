@@ -12,8 +12,10 @@ const TERMINAL_LINES = [
   { type: 'out', text: 'Java · Python · Flask · Web Development · Git', cls: 'term-yellow' },
   { type: 'cmd', text: 'echo $STATUS' },
   { type: 'out', text: '💼 Currently Interning at CADIBAL', cls: '' },
-  { type: 'cmd', text: 'echo $FOCUS' },
-  { type: 'out', text: 'Building efficient & user-friendly web solutions 🚀', cls: '' },
+  { type: 'cmd', text: 'node quote.js' },
+  { type: 'out', text: 'for (Learn; Code; Innovate++) {', cls: 'term-cyan' },
+  { type: 'out', text: '  Evolution', cls: 'term-yellow' },
+  { type: 'out', text: '}', cls: 'term-cyan' },
 ];
 
 const ROLES = ['Web Developer', 'Java Developer', 'Flask Developer', 'Problem Solver'];
