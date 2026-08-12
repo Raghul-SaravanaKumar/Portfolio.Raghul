@@ -145,7 +145,7 @@ export default function Footer() {
               letterSpacing: '0.12em',
               textTransform: 'uppercase'
             }}>
-              // EXTERNAL_LINKS
+              // EXTERNAL_CACHE's
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.55rem' }}>
