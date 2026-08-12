@@ -1,16 +1,17 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMail, FiSend, FiPhone, FiUser, FiMessageSquare, FiCheckCircle, FiXCircle, FiLoader } from 'react-icons/fi';
-import { FaGithub, FaLinkedin, FaTelegram, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { useInView } from '../hooks/useInView';
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   Web3Forms — completely free, no backend, emails straight to Gmail.
-   Get YOUR key at https://web3forms.com → Enter gsri318@gmail.com → copy key.
-   Replace WEB3FORMS_KEY below with your key.
-   Until then, the form still works as a mailto: fallback.
-───────────────────────────────────────────────────────────────────────────── */
-const WEB3FORMS_KEY = '916b0e31-df65-4e15-9d6a-5a4cf5540b87'; 
+/*
+  Web3Forms — free, no backend, emails straight to your inbox.
+  Key lives in .env as VITE_WEB3FORMS_KEY (kept out of source control).
+  NOTE: VITE_* variables are bundled into the client JS — the key is
+  still client-visible in the compiled output. Rotate it via
+  https://web3forms.com if the old key was committed to git history.
+*/
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
 const SOCIALS = [
   {
@@ -72,7 +73,6 @@ export default function Contact() {
   const [touched, setTouched] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [errorMsg, setErrorMsg] = useState('');
-  const formRef = useRef(null);
 
   const errors = validate(form);
   const isValid = Object.keys(errors).length === 0;
@@ -88,54 +88,38 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Mark all fields as touched to show errors
+    // Mark all fields as touched to show validation errors
     setTouched({ name: true, email: true, subject: true, message: true });
     if (!isValid) return;
 
     setStatus('sending');
+    setErrorMsg('');
 
-    /* ── Try Web3Forms first ── */
-    if (WEB3FORMS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY') {
-      try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({
-            access_key: WEB3FORMS_KEY,
-            name: form.name,
-            email: form.email,
-            subject: form.subject || `Portfolio message from ${form.name}`,
-            message: form.message,
-            from_name: 'Portfolio Contact Form',
-          }),
-        });
-        const data = await res.json();
-        if (data.success) {
-          setStatus('success');
-          setForm(EMPTY_FORM);
-          setTouched({});
-          return;
-        }
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: form.name,
+          email: form.email,
+          subject: form.subject || `Portfolio message from ${form.name}`,
+          message: form.message,
+          from_name: 'Portfolio Contact Form',
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus('success');
+        setForm(EMPTY_FORM);
+        setTouched({});
+      } else {
         throw new Error(data.message || 'Submission failed');
-      } catch (err) {
-        setErrorMsg(err.message);
-        setStatus('error');
-        return;
       }
+    } catch (err) {
+      setErrorMsg(err.message || 'Unable to send your message. Please try again.');
+      setStatus('error');
     }
-
-    /* ── Fallback: open mailto (works without an API key) ── */
-    const mailBody =
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`;
-    window.open(
-        `mailto:iamraghul18@gmail.com?subject=${encodeURIComponent(
-          form.subject || `Portfolio message from ${form.name}`
-        )}\u0026body=${encodeURIComponent(mailBody)}`,
-      '_blank'
-    );
-    setStatus('success');
-    setForm(EMPTY_FORM);
-    setTouched({});
   };
 
   const resetForm = () => {
@@ -228,7 +212,7 @@ export default function Contact() {
             {/* Availability badge */}
             <div className="contact-availability">
               <span className="contact-avail-dot" />
-              <span>Available for internships & freelance work</span>
+              <span>Available for internships &amp; freelance work</span>
             </div>
           </motion.div>
 
@@ -279,7 +263,7 @@ export default function Contact() {
                     <FiXCircle />
                   </div>
                   <h3>Something went wrong</h3>
-                  <p>{errorMsg || 'Please try again or email me directly at raghullingesh58@gmail.com'}</p>
+                  <p>{errorMsg || 'Unable to send your message. Please try again or email me directly at iamraghul18@gmail.com'}</p>
                   <motion.button
                     className="btn-outline form-state-btn"
                     onClick={resetForm}
@@ -295,7 +279,6 @@ export default function Contact() {
               {(status === 'idle' || status === 'sending') && (
                 <motion.form
                   key="form"
-                  ref={formRef}
                   className="contact-form"
                   onSubmit={handleSubmit}
                   noValidate
@@ -327,7 +310,7 @@ export default function Contact() {
                     </div>
 
                     <div className="form-group">
-                      <label className="form-label" htmlFor="contact-email">
+                      <label className="form-label" htmlFor="contact-email-input">
                         <FiMail className="form-label-icon" /> Email Address *
                       </label>
                       <input
