@@ -1,6 +1,4 @@
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { SiPython, SiJavascript, SiHtml5, SiCss, SiFlask, SiGit, SiBootstrap, SiGithub, SiSqlite, SiC, SiReact, SiDocker } from 'react-icons/si';
-import { FaJava } from 'react-icons/fa';
 import { useInView } from '../hooks/useInView';
 import { useCallback, useRef } from 'react';
 
@@ -12,7 +10,7 @@ const goals = [
 ];
 
 const achievements = [
-  { name: 'First Aid Assistance (Web mode)', emoji: '🩺', text: 'Intern @ CADIBAL' },
+  { emoji: '🩺', text: 'Intern @ CADIBAL' },
   { icon: '💻', text: '4+ GitHub Projects' },
   { icon: '🚀', text: 'Passionate Developer' },
 ];
@@ -21,10 +19,22 @@ const infoItems = [
   { label: 'Location', value: 'Erode, Tamilnadu, India 🇮🇳' },
   { label: 'Degree', value: 'B.E CSE (2023–2027)' },
   { label: 'College', value: 'Shree Venkateshwara Hi-Tech' },
-  { label: 'Email', value: 'raghullingesh58@gmail.com' },
-  { label: 'GitHub', value: '@Raghul1815' },
+  { label: 'Email', value: 'iamraghul18@gmail.com' },
+  { label: 'GitHub', value: '@Raghul-SaravanaKumar' },
   { label: 'Languages', value: 'Tamil, English' },
-  { label: 'Resume', value: <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'underline' }}>View Resume (PDF)</a> },
+  {
+    label: 'Resume',
+    value: (
+      <a
+        href="/Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: 'var(--accent-cyan)', textDecoration: 'underline' }}
+      >
+        View Resume (PDF)
+      </a>
+    ),
+  },
 ];
 
 function TiltAvatar({ children }) {
