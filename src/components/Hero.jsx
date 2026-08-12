@@ -8,11 +8,11 @@ import AppleEmoji from './AppleEmoji';
 const TERMINAL_LINES = [
   { type: 'cmd', text: 'whoami' },
   { type: 'out', text: 'Raghul S — Web Developer', cls: 'term-green' },
-  { type: 'cmd', text: 'Butterfly skills.txt' },
+  { type: 'cmd', text: 'butterfly skills.txt' },
   { type: 'out', text: 'Java · Python · Flask · Web Development · Git', cls: 'term-yellow' },
   { type: 'cmd', text: 'echo $STATUS' },
   { type: 'out', text: '💼 Worked as Web Developer Intern @ CADIBAL', cls: '' },
-  { type: 'cmd', text: 'Dragon_Fire Dragon_Fire.java' },
+  { type: 'cmd', text: 'Inspirational_Quote Dragon_Fire.java' },
   { type: 'out', text: 'for (Learn; Code; Innovate++) {', cls: 'term-cyan' },
   { type: 'out', text: '  System.out.println("Evolution 📈");', cls: 'term-yellow' },
   { type: 'out', text: '}', cls: 'term-cyan' },
