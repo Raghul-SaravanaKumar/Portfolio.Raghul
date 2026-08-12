@@ -12,11 +12,44 @@ const TERMINAL_LINES = [
   { type: 'out', text: 'Java · Python · Flask · Web Development · Git', cls: 'term-yellow' },
   { type: 'cmd', text: 'echo $STATUS' },
   { type: 'out', text: '💼 Currently Interning at CADIBAL', cls: '' },
-  { type: 'cmd', text: 'node quote.java' },
+  { type: 'cmd', text: 'node quote.js' },
   { type: 'out', text: 'for (Learn; Code; Innovate++) {', cls: 'term-cyan' },
-  { type: 'out', text: '  Evolution', cls: 'term-yellow' },
+  { type: 'out', text: '  System.out.println("Evolution 📈");', cls: 'term-yellow' },
   { type: 'out', text: '}', cls: 'term-cyan' },
 ];
+
+const parseEmojiText = (text) => {
+  if (typeof text !== 'string') return text;
+  
+  const emojis = ['💼', '📈'];
+  let parts = [text];
+  
+  emojis.forEach((emoji) => {
+    let nextParts = [];
+    parts.forEach((part) => {
+      if (typeof part === 'string' && part.includes(emoji)) {
+        const splitParts = part.split(emoji);
+        splitParts.forEach((sp, idx) => {
+          nextParts.push(sp);
+          if (idx < splitParts.length - 1) {
+            nextParts.push(
+              <AppleEmoji 
+                emoji={emoji} 
+                key={`${emoji}-${idx}`} 
+                style={{ width: '1.1em', height: '1.1em', verticalAlign: '-0.2em' }} 
+              />
+            );
+          }
+        });
+      } else {
+        nextParts.push(part);
+      }
+    });
+    parts = nextParts;
+  });
+  
+  return parts;
+};
 
 const ROLES = ['Web Developer', 'Java Developer', 'Flask Developer', 'Problem Solver'];
 
@@ -257,7 +290,7 @@ export default function Hero() {
                         <span className="term-cmd">{line.text}</span>
                       </>
                     ) : (
-                      <span className={`term-output ${line.cls || ''}`}>{line.text}</span>
+                      <span className={`term-output ${line.cls || ''}`}>{parseEmojiText(line.text)}</span>
                     )}
                   </div>
                 ))}
@@ -271,7 +304,7 @@ export default function Hero() {
                       </>
                     ) : (
                       <span className={`term-output ${typing.cls || ''}`}>
-                        {typing.text}<span className="term-cursor" />
+                        {parseEmojiText(typing.text)}<span className="term-cursor" />
                       </span>
                     )}
                   </div>
