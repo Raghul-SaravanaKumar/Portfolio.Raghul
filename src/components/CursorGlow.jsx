@@ -11,6 +11,9 @@ export default function CursorGlow() {
   const rafRef = useRef(null);
 
   useEffect(() => {
+    // Skip on touch-only devices — no hover cursor needed
+    if (window.matchMedia('(hover: none)').matches) return;
+
     const cursor = cursorRef.current;
     const ringEl = ringRef.current;
 
@@ -29,6 +32,9 @@ export default function CursorGlow() {
       ringEl.style.top = `${ring.current.y}px`;
       rafRef.current = requestAnimationFrame(animate);
     };
+
+    // Keep a ref to in-flight particle timeouts so we can cancel them on unmount
+    const particleTimeouts = [];
 
     const spawnParticle = (x, y) => {
       const el = document.createElement('div');
@@ -55,29 +61,41 @@ export default function CursorGlow() {
         el.style.opacity = '0';
       });
 
-      setTimeout(() => {
+      const tid = setTimeout(() => {
         el.remove();
         particlesRef.current = particlesRef.current.filter(p => p !== el);
       }, 650);
+      particleTimeouts.push(tid);
     };
 
     const onEnterLink = () => cursor.classList.add('cursor-hover');
     const onLeaveLink = () => cursor.classList.remove('cursor-hover');
 
-    const attachToLinks = () => {
-      document.querySelectorAll('a, button, [role="button"]').forEach(el => {
-        el.addEventListener('mouseenter', onEnterLink);
-        el.addEventListener('mouseleave', onLeaveLink);
-      });
-    };
+    // Track which elements got listeners so we can remove them precisely
+    const targets = [];
+    document.querySelectorAll('a, button, [role="button"]').forEach(el => {
+      el.addEventListener('mouseenter', onEnterLink);
+      el.addEventListener('mouseleave', onLeaveLink);
+      targets.push(el);
+    });
 
     window.addEventListener('mousemove', onMove);
     rafRef.current = requestAnimationFrame(animate);
-    attachToLinks();
 
     return () => {
       window.removeEventListener('mousemove', onMove);
       cancelAnimationFrame(rafRef.current);
+
+      // Remove all link listeners using the same references
+      targets.forEach(el => {
+        el.removeEventListener('mouseenter', onEnterLink);
+        el.removeEventListener('mouseleave', onLeaveLink);
+      });
+
+      // Cancel any in-flight particle removal timers and clean up DOM nodes
+      particleTimeouts.forEach(tid => clearTimeout(tid));
+      particlesRef.current.forEach(el => el.remove());
+      particlesRef.current = [];
     };
   }, []);
 
