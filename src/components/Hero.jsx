@@ -12,7 +12,7 @@ const TERMINAL_LINES = [
   { type: 'out', text: 'Java · Python · Flask · Web Development · Git', cls: 'term-yellow' },
   { type: 'cmd', text: 'echo $STATUS' },
   { type: 'out', text: '💼 Currently Interning at CADIBAL', cls: '' },
-  { type: 'cmd', text: 'node quote.js' },
+  { type: 'cmd', text: 'node quote.java' },
   { type: 'out', text: 'for (Learn; Code; Innovate++) {', cls: 'term-cyan' },
   { type: 'out', text: '  Evolution', cls: 'term-yellow' },
   { type: 'out', text: '}', cls: 'term-cyan' },
