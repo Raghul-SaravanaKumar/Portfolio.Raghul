@@ -240,30 +240,5 @@ body.light-mode .contact-form {
   height: 3px !important;
 }
 
-/* ──────────────────────────────────────────────
-   Centered Minimal Footer Override
-────────────────────────────────────────────── */
 
-.footer-inner {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  text-align: center !important;
-  gap: 1.5rem !important;
-}
-
-.footer-brand {
-  align-items: center !important;
-}
-
-.footer-links {
-  justify-content: center !important;
-}
-
-.footer-bottom {
-  flex-direction: column !important;
-  gap: 0.5rem !important;
-  text-align: center !important;
-  justify-content: center !important;
-}
 
