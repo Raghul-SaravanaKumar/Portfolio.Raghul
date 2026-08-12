@@ -11,16 +11,35 @@ const TERMINAL_LINES = [
   { type: 'cmd', text: 'cat skills.txt' },
   { type: 'out', text: 'Java · Python · Flask · Web Development · Git', cls: 'term-yellow' },
   { type: 'cmd', text: 'echo $STATUS' },
-  { type: 'out', text: '💼 Currently Interning at CADIBAL', cls: '' },
-  { type: 'cmd', text: 'node quote.js' },
+  { type: 'out', text: '💼 Worked as Web Developer Intern at CADIBAL', cls: '' },
+  { type: 'cmd', text: 'java quote.java' },
   { type: 'out', text: 'for (Learn; Code; Innovate++) {', cls: 'term-cyan' },
   { type: 'out', text: '  System.out.println("Evolution 📈");', cls: 'term-yellow' },
   { type: 'out', text: '}', cls: 'term-cyan' },
 ];
 
-const parseEmojiText = (text) => {
+const parseTerminalLine = (text) => {
   if (typeof text !== 'string') return text;
-  
+
+  // Check if it is the Java System.out.println loop line
+  if (text.includes('System.out.println')) {
+    return (
+      <>
+        <span style={{ whiteSpace: 'pre' }}>  </span>
+        <span style={{ color: '#7dd3fc', fontWeight: 600 }}>System</span>
+        <span style={{ color: '#c9d1d9' }}>.</span>
+        <span style={{ color: '#ff7b72' }}>out</span>
+        <span style={{ color: '#c9d1d9' }}>.</span>
+        <span style={{ color: '#d2a8ff' }}>println</span>
+        <span style={{ color: '#c9d1d9' }}>(</span>
+        <span style={{ color: '#ffa657' }}>"Evolution </span>
+        <AppleEmoji emoji="📈" style={{ width: '1.05em', height: '1.05em', verticalAlign: '-0.15em' }} />
+        <span style={{ color: '#ffa657' }}>"</span>
+        <span style={{ color: '#c9d1d9' }}>);</span>
+      </>
+    );
+  }
+
   const emojis = ['💼', '📈'];
   let parts = [text];
   
@@ -290,7 +309,7 @@ export default function Hero() {
                         <span className="term-cmd">{line.text}</span>
                       </>
                     ) : (
-                      <span className={`term-output ${line.cls || ''}`}>{parseEmojiText(line.text)}</span>
+                      <span className={`term-output ${line.cls || ''}`}>{parseTerminalLine(line.text)}</span>
                     )}
                   </div>
                 ))}
@@ -304,7 +323,7 @@ export default function Hero() {
                       </>
                     ) : (
                       <span className={`term-output ${typing.cls || ''}`}>
-                        {parseEmojiText(typing.text)}<span className="term-cursor" />
+                        {parseTerminalLine(typing.text)}<span className="term-cursor" />
                       </span>
                     )}
                   </div>

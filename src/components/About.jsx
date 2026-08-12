@@ -11,7 +11,7 @@ const goals = [
 ];
 
 const achievements = [
-  { emoji: '🩺', text: 'Intern @ CADIBAL' },
+  { emoji: '🩺', text: 'Ex-Intern @ CADIBAL' },
   { emoji: '💻', text: '4+ GitHub Projects' },
   { emoji: '🚀', text: 'Passionate Developer' },
 ];
@@ -177,7 +177,7 @@ export default function About() {
               I love creating efficient, user-friendly applications like my <AppleEmoji emoji="🌤️" /> Weather Broadcasting project or the <AppleEmoji emoji="🎓" /> Self Learning Portal that solve real-world problems.
             </p>
             <p>
-              Currently, I am working as an intern at CADIBAL, focusing on their <AppleEmoji emoji="🚑" /> First Aid Assistance project and Self Learning Portal to help transform careers through technology.
+              Previously, I worked as a Web Developer Intern at CADIBAL, focusing on their <AppleEmoji emoji="🚑" /> First Aid Assistance project and Self Learning Portal to help transform careers through technology.
             </p>
 
             <motion.div
