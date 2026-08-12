@@ -29,6 +29,7 @@ import {
 import { VscVscode } from 'react-icons/vsc';
 import { FaJava, FaCss3Alt, FaTools } from 'react-icons/fa';
 import { useInView } from '../hooks/useInView';
+import AppleEmoji from './AppleEmoji';
 
 const CATEGORIES = [
   {
@@ -164,7 +165,7 @@ export default function Skills() {
                 animate={{ rotate: [0, -5, 5, 0] }}
                 transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
               >
-                {cat.icon}
+                <AppleEmoji emoji={cat.icon} />
               </motion.div>
               <div className="skill-category-title">{cat.title}</div>
 

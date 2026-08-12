@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import AppleEmoji from './AppleEmoji';
 
 const footerLinks = [
   { label: 'About', href: '#about' },
@@ -27,7 +28,7 @@ export default function Footer() {
               Raghul S
             </div>
             <p className="footer-tagline">
-              Toppers are running on outdated OS. We just jailbroke the system and installed our own knowledge base⚡
+              Toppers are running on outdated OS. We just jailbroke the system and installed our own knowledge base <AppleEmoji emoji="⚡" />
             </p>
           </div>
 

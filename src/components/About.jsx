@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { useCallback, useRef } from 'react';
+import AppleEmoji from './AppleEmoji';
 
 const goals = [
   'Web Development & Design',
@@ -11,8 +12,8 @@ const goals = [
 
 const achievements = [
   { emoji: '🩺', text: 'Intern @ CADIBAL' },
-  { icon: '💻', text: '4+ GitHub Projects' },
-  { icon: '🚀', text: 'Passionate Developer' },
+  { emoji: '💻', text: '4+ GitHub Projects' },
+  { emoji: '🚀', text: 'Passionate Developer' },
 ];
 
 const infoItems = [
@@ -128,7 +129,7 @@ export default function About() {
                 <div className="orbit-ring">
                   {['⚡', '🚀', '🤖', '💡'].map((ic, i) => (
                     <span key={i} className="orbit-dot" style={{ '--i': i }}>
-                      {ic}
+                      <AppleEmoji emoji={ic} />
                     </span>
                   ))}
                 </div>
@@ -148,7 +149,9 @@ export default function About() {
                   variants={itemVariants}
                   whileHover={{ x: 6, scale: 1.02, transition: { duration: 0.15 } }}
                 >
-                  <span className="achievement-icon">{a.icon || a.emoji}</span>
+                  <span className="achievement-icon">
+                    <AppleEmoji emoji={a.emoji} />
+                  </span>
                   <span>{a.text}</span>
                 </motion.div>
               ))}
@@ -171,10 +174,10 @@ export default function About() {
               skills, including a solid understanding of OOP concepts.
             </p>
             <p>
-              I love creating efficient, user-friendly applications like my 🌤️ Weather Broadcasting project or the 🎓 Self Learning Portal that solve real-world problems.
+              I love creating efficient, user-friendly applications like my <AppleEmoji emoji="🌤️" /> Weather Broadcasting project or the <AppleEmoji emoji="🎓" /> Self Learning Portal that solve real-world problems.
             </p>
             <p>
-              Currently, I am working as an intern at CADIBAL, focusing on their 🚑 First Aid Assistance project and Self Learning Portal to help transform careers through technology.
+              Currently, I am working as an intern at CADIBAL, focusing on their <AppleEmoji emoji="🚑" /> First Aid Assistance project and Self Learning Portal to help transform careers through technology.
             </p>
 
             <motion.div
@@ -190,7 +193,7 @@ export default function About() {
                   variants={chipVariants}
                   whileHover={{ scale: 1.06, y: -3 }}
                 >
-                  🎯 {g}
+                  <AppleEmoji emoji="🎯" /> {g}
                 </motion.span>
               ))}
             </motion.div>

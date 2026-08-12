@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 import FloatingIcons from './FloatingIcons';
 import MagneticButton from './MagneticButton';
+import AppleEmoji from './AppleEmoji';
 
 const TERMINAL_LINES = [
   { type: 'cmd', text: 'whoami' },
@@ -198,12 +199,12 @@ export default function Hero() {
             >
               <MagneticButton strength={0.4}>
                 <button className="btn-primary btn-ripple" onClick={() => handleScroll('#projects')}>
-                  🚀 View Projects
+                  <AppleEmoji emoji="🚀" /> View Projects
                 </button>
               </MagneticButton>
               <MagneticButton strength={0.4}>
                 <button className="btn-outline btn-ripple" onClick={() => handleScroll('#contact')}>
-                  💬 Get in Touch
+                  <AppleEmoji emoji="💬" /> Get in Touch
                 </button>
               </MagneticButton>
             </motion.div>
@@ -218,7 +219,7 @@ export default function Hero() {
                 { num: '5+', label: 'GitHub Repos' },
                 { num: '6', label: 'Languages' },
                 { num: '4+', label: 'Frameworks & Tools' },
-                { num: '💼', label: 'CADIBAL Intern' },
+                { num: <AppleEmoji emoji="💼" />, label: 'CADIBAL Intern' },
               ].map((s, i) => (
                 <motion.div
                   className="stat-item stat-item-animated"

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import AppleEmoji from './AppleEmoji';
 
 const links = [
   { label: 'About', href: '#about' },
@@ -88,7 +89,7 @@ export default function Navbar() {
                 onClick={(e) => handleNav(e, '#contact')}
                 id="navbar-hire-btn"
               >
-                Hire Me ✨
+                Hire Me <AppleEmoji emoji="✨" />
               </a>
             </li>
           </ul>
@@ -133,7 +134,7 @@ export default function Navbar() {
             className="navbar-cta"
             onClick={(e) => handleNav(e, '#contact')}
           >
-            Hire Me ✨
+            Hire Me <AppleEmoji emoji="✨" />
           </a>
         </div>
       )}

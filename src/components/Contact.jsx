@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiMail, FiSend, FiPhone, FiUser, FiMessageSquare, FiCheckCircle, FiXCircle, FiLoader } from 'react-icons/fi';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { useInView } from '../hooks/useInView';
+import AppleEmoji from './AppleEmoji';
 
 /*
   Web3Forms — free, no backend, emails straight to your inbox.
@@ -160,7 +161,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             <h3>
-              Say Hello <span className="gradient-text">👋</span>
+              Say Hello <span className="gradient-text"><AppleEmoji emoji="👋" /></span>
             </h3>
             <p>
               Whether you have a project idea, an internship opportunity, a

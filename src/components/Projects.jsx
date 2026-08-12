@@ -3,6 +3,7 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import { useInView } from '../hooks/useInView';
 import { useCallback, useRef } from 'react';
 import { useSpring, useMotionValue } from 'framer-motion';
+import AppleEmoji from './AppleEmoji';
 
 const PROJECTS = [
   {
@@ -149,7 +150,7 @@ function ProjectCard({ proj, index }) {
           whileHover={{ scale: 1.2, rotate: -8 }}
           transition={{ type: 'spring', stiffness: 300 }}
         >
-          {proj.emoji}
+          <AppleEmoji emoji={proj.emoji} />
         </motion.div>
         <div className="project-links">
           <motion.a

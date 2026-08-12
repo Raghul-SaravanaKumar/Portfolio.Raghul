@@ -200,11 +200,6 @@ body.light-mode .hero {
   box-shadow: var(--shadow-glow), var(--shadow-card) !important;
 }
 
-.stat-item {
-  border: 1px solid var(--border) !important;
-  background: var(--surface) !important;
-  box-shadow: var(--shadow-card) !important;
-}
 
 .orb-1 { background: rgba(14, 245, 233, 0.15) !important; }
 .orb-2 { background: rgba(0, 181, 170, 0.12) !important; }
