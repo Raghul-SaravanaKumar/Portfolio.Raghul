@@ -9,13 +9,13 @@ export default function JailbreakText() {
   const [showEmoji, setShowEmoji] = useState(false);
   const [sparks, setSparks] = useState([]);
 
-  // Typewriter effect
+  // Slowed down typewriter speed (65ms per character)
   useEffect(() => {
     let t;
     if (typedText.length < fullText.length) {
       t = setTimeout(() => {
         setTypedText(fullText.slice(0, typedText.length + 1));
-      }, 35);
+      }, 65);
     } else {
       t = setTimeout(() => {
         setIsBurning(true);
@@ -27,19 +27,18 @@ export default function JailbreakText() {
     return () => clearTimeout(t);
   }, [typedText]);
 
-  // Spark emitter loop when burning is active
+  // Spark emitter loop
   useEffect(() => {
     if (!isBurning) return;
 
     const interval = setInterval(() => {
-      // Create a new spark particle with random horizontal offset, size, and duration
       const id = Math.random();
-      const left = Math.floor(Math.random() * 90) + 5; // 5% to 95% width
-      const size = Math.random() * 4 + 2; // 2px to 6px size
-      const duration = Math.random() * 1.2 + 0.8; // 0.8s to 2s drift duration
+      const left = Math.floor(Math.random() * 90) + 5;
+      const size = Math.random() * 4 + 2;
+      const duration = Math.random() * 1.2 + 0.8;
       
       setSparks((prev) => [...prev.slice(-20), { id, left, size, duration }]);
-    }, 150); // Emit a spark every 150ms
+    }, 150);
 
     return () => clearInterval(interval);
   }, [isBurning]);
@@ -54,8 +53,8 @@ export default function JailbreakText() {
               key={spark.id}
               initial={{ y: 5, x: 0, opacity: 0.8, scale: 1 }}
               animate={{ 
-                y: -40 - Math.random() * 30, // Drift up
-                x: (Math.random() - 0.5) * 20, // Sway left/right
+                y: -40 - Math.random() * 30,
+                x: (Math.random() - 0.5) * 20,
                 opacity: 0,
                 scale: 0.4
               }}
@@ -76,13 +75,20 @@ export default function JailbreakText() {
         </AnimatePresence>
       </div>
 
-      {/* Main Tagline text with high visibility and flickering fire glow */}
+      {/* Font morph container */}
       <span 
         className={isBurning ? 'fire-flicker' : ''}
         style={{ 
           color: isBurning ? '#fff' : '#c9d1d9',
-          fontWeight: isBurning ? 600 : 400,
-          transition: 'all 0.5s ease-in-out',
+          // Morph font family & styling on burn ignition
+          fontFamily: isBurning 
+            ? "'Anton', 'Outfit', sans-serif" 
+            : "var(--mono), SFMono-Regular, monospace",
+          fontWeight: isBurning ? 900 : 400,
+          textTransform: isBurning ? 'uppercase' : 'none',
+          letterSpacing: isBurning ? '0.04em' : '0',
+          fontSize: isBurning ? '0.85rem' : '0.78rem',
+          transition: 'font-family 0.6s ease, font-weight 0.6s ease, text-transform 0.6s ease, letter-spacing 0.6s ease, color 0.5s ease',
           display: 'inline',
           position: 'relative',
           zIndex: 2,
