@@ -19,6 +19,7 @@ const emojiMap = {
   '💼': '1f4bc',
   '✨': '2728',
   '📈': '1f4c8',
+  '🇮🇳': '1f1ee-1f1f3',
 };
 
 export default function AppleEmoji({ emoji, className = '', style = {} }) {

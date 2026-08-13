@@ -17,7 +17,7 @@ const achievements = [
 ];
 
 const infoItems = [
-  { label: 'Location', value: 'Erode, Tamilnadu, India 🇮🇳' },
+  { label: 'Location', value: <>Erode, Tamilnadu, India <AppleEmoji emoji="🇮🇳" /></> },
   { label: 'Degree', value: 'B.E CSE (2023–2027)' },
   { label: 'College', value: 'Shree Venkateshwara Hi-Tech Engineering College' },
   { label: 'Email', value: 'iamraghul18@gmail.com' },
