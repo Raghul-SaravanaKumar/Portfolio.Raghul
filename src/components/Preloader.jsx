@@ -1,8 +1,19 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const WORDS = [
+  'HELLO',
+  'வணக்கம்', // Tamil
+  'DESIGN',
+  'DEVELOP',
+  'DEBUG',
+  'DEPLOY',
+  'INNOVATE',
+];
+
 export default function Preloader({ onComplete }) {
   const [count, setCount] = useState(0);
+  const [wordIdx, setWordIdx] = useState(0);
   const [consoleLine, setConsoleLine] = useState('');
   const [isDone, setIsDone] = useState(false);
 
@@ -23,7 +34,7 @@ export default function Preloader({ onComplete }) {
 
   useEffect(() => {
     let start = 0;
-    const duration = 2800; // Fast-paced 2.8 seconds loader
+    const duration = 3200; // 3.2 seconds total duration
     const intervalTime = 15;
     const stepCount = duration / intervalTime;
     
@@ -31,6 +42,11 @@ export default function Preloader({ onComplete }) {
       start += 1;
       const progress = Math.min(Math.floor((start / stepCount) * 100), 100);
       setCount(progress);
+
+      // Cycle greeting words based on percentage progress
+      const wordStep = Math.floor(100 / WORDS.length);
+      const nextWordIdx = Math.min(Math.floor(progress / wordStep), WORDS.length - 1);
+      setWordIdx(nextWordIdx);
 
       if (progress >= 100) {
         clearInterval(timer);
@@ -45,7 +61,7 @@ export default function Preloader({ onComplete }) {
   }, [onComplete]);
 
   // Radius logic for circular HUD progress ring
-  const radius = 50;
+  const radius = 55;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (count / 100) * circumference;
 
@@ -89,7 +105,7 @@ export default function Preloader({ onComplete }) {
           {/* Holographic scanning line */}
           <motion.div
             animate={{ y: ['0vh', '100vh'] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: 'linear' }}
             style={{
               position: 'absolute',
               top: 0,
@@ -114,35 +130,35 @@ export default function Preloader({ onComplete }) {
             </div>
           </div>
 
-          {/* Middle Row: Holographic HUD circle and percentage */}
+          {/* Middle Row: Holographic HUD circle and Greeting Word Switcher */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', zIndex: 10 }}>
-            <div style={{ position: 'relative', width: 140, height: 140, display: 'grid', placeItems: 'center' }}>
+            <div style={{ position: 'relative', width: 170, height: 170, display: 'grid', placeItems: 'center' }}>
               
               {/* Outer Decorative Circle */}
               <div style={{
                 position: 'absolute',
-                inset: -10,
+                inset: -12,
                 borderRadius: '50%',
                 border: '1px dashed rgba(57, 255, 20, 0.15)',
                 animation: 'spin 15s linear infinite',
               }} />
 
               {/* Progress Ring */}
-              <svg width="120" height="120" style={{ transform: 'rotate(-90deg)' }}>
+              <svg width="150" height="150" style={{ transform: 'rotate(-90deg)' }}>
                 <circle
-                  cx="60"
-                  cy="60"
+                  cx="75"
+                  cy="75"
                   r={radius}
                   stroke="rgba(57, 255, 20, 0.05)"
-                  strokeWidth="3"
+                  strokeWidth="3.5"
                   fill="transparent"
                 />
                 <motion.circle
-                  cx="60"
-                  cy="60"
+                  cx="75"
+                  cy="75"
                   r={radius}
                   stroke="var(--accent-green)"
-                  strokeWidth="3"
+                  strokeWidth="3.5"
                   fill="transparent"
                   strokeDasharray={circumference}
                   animate={{ strokeDashoffset }}
@@ -153,24 +169,41 @@ export default function Preloader({ onComplete }) {
                 />
               </svg>
 
-              {/* Center Counter */}
+              {/* Center Greeting Word */}
               <div style={{
                 position: 'absolute',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
+                display: 'grid',
+                placeItems: 'center',
+                width: '100px',
+                textAlign: 'center',
               }}>
-                <span style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', textShadow: '0 0 10px rgba(255,255,255,0.2)' }}>
-                  {count}%
-                </span>
-                <span style={{ fontSize: '0.52rem', color: 'rgba(57, 255, 20, 0.65)', fontWeight: 700, letterSpacing: '0.08em', marginTop: 2 }}>
-                  STATUS
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={WORDS[wordIdx]}
+                    initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, y: -10 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    style={{
+                      fontSize: '0.85rem',
+                      fontWeight: 800,
+                      color: '#fff',
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      textShadow: '0 0 10px rgba(255,255,255,0.3)',
+                    }}
+                  >
+                    {WORDS[wordIdx]}
+                  </motion.span>
+                </AnimatePresence>
+                <span style={{ fontSize: '0.52rem', color: 'rgba(57, 255, 20, 0.65)', fontWeight: 700, letterSpacing: '0.08em', marginTop: 4 }}>
+                  INIT
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Bottom Row: Console output line diagnostics */}
+          {/* Bottom Row: Console output line diagnostics with progress percentage */}
           <div style={{ 
             width: '100%', 
             maxWidth: '600px', 
@@ -181,15 +214,21 @@ export default function Preloader({ onComplete }) {
             background: 'rgba(5,5,10,0.5)',
             border: '1px solid rgba(57,255,20,0.1)',
             borderRadius: '10px',
-            padding: '1rem 1.25rem',
+            padding: '1.1rem 1.35rem',
             boxShadow: '0 10px 30px rgba(0,0,0,0.4)',
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem', marginBottom: '0.2rem' }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#ff5f56' }} />
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#ffbd2e' }} />
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#27c93f' }} />
-              <span style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.25)', marginLeft: '0.35rem' }}>console.sh</span>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem', marginBottom: '0.2rem' }}>
+              <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#ff5f56' }} />
+                <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#ffbd2e' }} />
+                <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#27c93f' }} />
+                <span style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.25)', marginLeft: '0.35rem' }}>decryptor.sh</span>
+              </div>
+              <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent-green)' }}>
+                {count}%
+              </span>
             </div>
+            
             <div style={{ 
               fontSize: '0.74rem', 
               color: 'var(--accent-green)', 
