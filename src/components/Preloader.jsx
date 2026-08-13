@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const WORDS = [
   'HELLO',
-  'வணக்கம்', // Tamil
+  'வணக்கம்', // Tamil: Vanakkam
   'DESIGN',
   'DEVELOP',
   'DEBUG',
@@ -16,25 +16,43 @@ export default function Preloader({ onComplete }) {
   const [wordIdx, setWordIdx] = useState(0);
   const [consoleLine, setConsoleLine] = useState('');
   const [isDone, setIsDone] = useState(false);
+  const [isShearing, setIsShearing] = useState(false);
 
-  // Setup diagnostic stream based on percentage count
+  // Diagnostics handler
   useEffect(() => {
     if (count < 25) {
-      setConsoleLine('[SYS_INIT]: ESTABLISHING TUNNEL PORT 0x7F...');
+      setConsoleLine('[PORT_TUNNEL]: INITIALIZING SECURE PORTS...');
     } else if (count < 50) {
-      setConsoleLine('[SYS_DECRYPT]: LOADING CORE SYSTEM ASSETS...');
+      setConsoleLine('[SYS_LOAD]: MOUNTING LOCAL MODULES...');
     } else if (count < 75) {
-      setConsoleLine('[KERNEL_PATCH]: BYPASSING DEFAULT OUTDATED OS...');
+      setConsoleLine('[OS_BYPASS]: DECOUPLING CORE KERNEL STACK...');
     } else if (count < 95) {
-      setConsoleLine('[SYS_JAILBREAK]: INJECTING PORTFOLIO DATA MODULE...');
+      setConsoleLine('[DATA_INJECT]: SYNCHRONIZING CACHE SPEC...');
     } else {
-      setConsoleLine('[SUCCESS]: ACCESS_GRANTED. REDIRECTING...');
+      setConsoleLine('[SUCCESS]: ACCESS GRANTED. UNLOCKING VAULT...');
     }
   }, [count]);
 
+  // Calculate target word index from count progress
+  const wordStep = Math.floor(100 / WORDS.length);
+  const targetWordIdx = Math.min(Math.floor(count / wordStep), WORDS.length - 1);
+
+  // Manage shearing transition when active index moves
+  useEffect(() => {
+    if (targetWordIdx !== wordIdx) {
+      setIsShearing(true);
+      const t = setTimeout(() => {
+        setWordIdx(targetWordIdx);
+        setIsShearing(false);
+      }, 120);
+      return () => clearTimeout(t);
+    }
+  }, [targetWordIdx, wordIdx]);
+
+  // Loading timeline (runs once on mount)
   useEffect(() => {
     let start = 0;
-    const duration = 3200; // 3.2 seconds total duration
+    const duration = 2800; // 2.8 seconds total loader duration
     const intervalTime = 15;
     const stepCount = duration / intervalTime;
     
@@ -43,16 +61,11 @@ export default function Preloader({ onComplete }) {
       const progress = Math.min(Math.floor((start / stepCount) * 100), 100);
       setCount(progress);
 
-      // Cycle greeting words based on percentage progress
-      const wordStep = Math.floor(100 / WORDS.length);
-      const nextWordIdx = Math.min(Math.floor(progress / wordStep), WORDS.length - 1);
-      setWordIdx(nextWordIdx);
-
       if (progress >= 100) {
         clearInterval(timer);
         setTimeout(() => {
           setIsDone(true);
-          setTimeout(onComplete, 600); // Fadeout
+          setTimeout(onComplete, 750); // Allow split curtain exit animation
         }, 400);
       }
     }, intervalTime);
@@ -60,187 +73,163 @@ export default function Preloader({ onComplete }) {
     return () => clearInterval(timer);
   }, [onComplete]);
 
-  // Radius logic for circular HUD progress ring
-  const radius = 55;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (count / 100) * circumference;
-
   return (
     <AnimatePresence>
       {!isDone && (
-        <motion.div
-          className="preloader-overlay"
-          initial={{ opacity: 1 }}
-          exit={{ 
-            opacity: 0,
-            scale: 1.05,
-            filter: 'blur(10px)',
-            transition: { duration: 0.6, ease: 'easeInOut' }
-          }}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: '#020204',
-            zIndex: 99999,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: '4rem 2rem',
-            fontFamily: 'var(--mono), monospace',
-            color: 'var(--text-muted)',
-            overflow: 'hidden',
-          }}
-        >
-          {/* Futuristic Grid Line Decorator */}
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: 'linear-gradient(rgba(57, 255, 20, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(57, 255, 20, 0.02) 1px, transparent 1px)',
-            backgroundSize: '30px 30px',
-            pointerEvents: 'none',
-            zIndex: 1,
-          }} />
-
-          {/* Holographic scanning line */}
+        <div style={{ position: 'fixed', inset: 0, zIndex: 99999, overflow: 'hidden' }}>
+          
+          {/* Top Vault Gate Curtain */}
           <motion.div
-            animate={{ y: ['0vh', '100vh'] }}
-            transition={{ duration: 2.8, repeat: Infinity, ease: 'linear' }}
+            initial={{ y: 0 }}
+            exit={{ 
+              y: '-50vh',
+              transition: { duration: 0.75, ease: [0.85, 0, 0.15, 1] }
+            }}
             style={{
               position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: '3px',
-              background: 'linear-gradient(90deg, transparent, var(--accent-green), transparent)',
-              boxShadow: '0 0 15px var(--accent-green), 0 0 25px var(--accent-green)',
-              opacity: 0.4,
-              zIndex: 2,
+              top: 0, left: 0, right: 0, height: '50vh',
+              background: '#020204',
+              borderBottom: '1px solid rgba(57, 255, 20, 0.12)',
+              zIndex: 100,
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
             }}
-          />
+          >
+            {/* Background Grid top segment */}
+            <div style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: 'linear-gradient(rgba(57, 255, 20, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(57, 255, 20, 0.015) 1px, transparent 1px)',
+              backgroundSize: '24px 24px',
+              opacity: 0.7,
+            }} />
 
-          {/* Top Row: System Identity */}
-          <div style={{ width: '100%', maxWidth: '800px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: 10 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.72rem', color: 'rgba(57,255,20,0.6)', fontWeight: 700 }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-green)', boxShadow: '0 0 6px var(--accent-green)' }} />
-              PORT_INITIALIZE: ACTIVE
+            {/* Split typography text: TOP HALF */}
+            <div style={{
+              height: '90px',
+              overflow: 'hidden',
+              transform: isShearing ? 'translateX(-12px)' : 'translateX(0)',
+              transition: 'transform 0.12s ease-out',
+              display: 'flex',
+              alignItems: 'flex-end',
+              marginBottom: '-2px', // align perfect split
+              position: 'relative',
+              zIndex: 10,
+            }}>
+              <h1 style={{
+                fontSize: 'clamp(3rem, 10vw, 6.5rem)',
+                fontWeight: 900,
+                color: '#fff',
+                letterSpacing: '-0.02em',
+                lineHeight: '0.9',
+                margin: 0,
+                textTransform: 'uppercase',
+                background: 'linear-gradient(180deg, #fff 40%, rgba(255,255,255,0.3))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}>
+                {WORDS[wordIdx]}
+              </h1>
             </div>
-            <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.2)' }}>
-              SYS_REV_0x1C
-            </div>
-          </div>
+          </motion.div>
 
-          {/* Middle Row: Holographic HUD circle and Greeting Word Switcher */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', zIndex: 10 }}>
-            <div style={{ position: 'relative', width: 170, height: 170, display: 'grid', placeItems: 'center' }}>
+          {/* Bottom Vault Gate Curtain */}
+          <motion.div
+            initial={{ y: 0 }}
+            exit={{ 
+              y: '50vh',
+              transition: { duration: 0.75, ease: [0.85, 0, 0.15, 1] }
+            }}
+            style={{
+              position: 'absolute',
+              bottom: 0, left: 0, right: 0, height: '50vh',
+              background: '#020204',
+              borderTop: '1px solid rgba(57, 255, 20, 0.12)',
+              zIndex: 100,
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+            }}
+          >
+            {/* Background Grid bottom segment */}
+            <div style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: 'linear-gradient(rgba(57, 255, 20, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(57, 255, 20, 0.015) 1px, transparent 1px)',
+              backgroundSize: '24px 24px',
+              opacity: 0.7,
+            }} />
+
+            {/* Split typography text: BOTTOM HALF */}
+            <div style={{
+              height: '90px',
+              overflow: 'hidden',
+              transform: isShearing ? 'translateX(12px)' : 'translateX(0)',
+              transition: 'transform 0.12s ease-out',
+              display: 'flex',
+              alignItems: 'flex-start',
+              marginTop: '-2px', // align perfect split
+              position: 'relative',
+              zIndex: 10,
+            }}>
+              <h1 style={{
+                fontSize: 'clamp(3rem, 10vw, 6.5rem)',
+                fontWeight: 900,
+                color: '#fff',
+                letterSpacing: '-0.02em',
+                lineHeight: '0.9',
+                margin: '-90px 0 0 0', // offsets to show bottom half
+                textTransform: 'uppercase',
+                background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 30%, transparent)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}>
+                {WORDS[wordIdx]}
+              </h1>
+            </div>
+
+            {/* Diagnostics HUD Panel & Counter */}
+            <div style={{ 
+              width: '90%', 
+              maxWidth: '540px', 
+              marginTop: '4rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.6rem',
+              zIndex: 20
+            }}>
               
-              {/* Outer Decorative Circle */}
-              <div style={{
-                position: 'absolute',
-                inset: -12,
-                borderRadius: '50%',
-                border: '1px dashed rgba(57, 255, 20, 0.15)',
-                animation: 'spin 15s linear infinite',
-              }} />
+              {/* Progress and status */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', fontSize: '0.72rem', color: 'rgba(57, 255, 20, 0.65)', fontWeight: 700 }}>
+                <span>{consoleLine}</span>
+                <span style={{ fontSize: '1rem', color: '#fff', fontWeight: 800 }}>{count}%</span>
+              </div>
 
-              {/* Progress Ring */}
-              <svg width="150" height="150" style={{ transform: 'rotate(-90deg)' }}>
-                <circle
-                  cx="75"
-                  cy="75"
-                  r={radius}
-                  stroke="rgba(57, 255, 20, 0.05)"
-                  strokeWidth="3.5"
-                  fill="transparent"
-                />
-                <motion.circle
-                  cx="75"
-                  cy="75"
-                  r={radius}
-                  stroke="var(--accent-green)"
-                  strokeWidth="3.5"
-                  fill="transparent"
-                  strokeDasharray={circumference}
-                  animate={{ strokeDashoffset }}
-                  transition={{ ease: 'easeOut' }}
+              {/* Progress bar line */}
+              <div style={{
+                width: '100%',
+                height: '2px',
+                background: 'rgba(255,255,255,0.03)',
+                borderRadius: '4px',
+                overflow: 'hidden',
+                position: 'relative'
+              }}>
+                <motion.div
                   style={{
-                    filter: 'drop-shadow(0 0 6px var(--accent-green))',
+                    height: '100%',
+                    background: 'linear-gradient(90deg, var(--accent-green), var(--accent-cyan))',
+                    width: `${count}%`,
+                    boxShadow: '0 0 8px var(--accent-green)',
                   }}
                 />
-              </svg>
-
-              {/* Center Greeting Word */}
-              <div style={{
-                position: 'absolute',
-                display: 'grid',
-                placeItems: 'center',
-                width: '100px',
-                textAlign: 'center',
-              }}>
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={WORDS[wordIdx]}
-                    initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.8, y: -10 }}
-                    transition={{ duration: 0.2, ease: 'easeOut' }}
-                    style={{
-                      fontSize: '0.85rem',
-                      fontWeight: 800,
-                      color: '#fff',
-                      letterSpacing: '0.08em',
-                      textTransform: 'uppercase',
-                      textShadow: '0 0 10px rgba(255,255,255,0.3)',
-                    }}
-                  >
-                    {WORDS[wordIdx]}
-                  </motion.span>
-                </AnimatePresence>
-                <span style={{ fontSize: '0.52rem', color: 'rgba(57, 255, 20, 0.65)', fontWeight: 700, letterSpacing: '0.08em', marginTop: 4 }}>
-                  INIT
-                </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Bottom Row: Console output line diagnostics with progress percentage */}
-          <div style={{ 
-            width: '100%', 
-            maxWidth: '600px', 
-            display: 'flex', 
-            flexDirection: 'column', 
-            gap: '0.85rem', 
-            zIndex: 10,
-            background: 'rgba(5,5,10,0.5)',
-            border: '1px solid rgba(57,255,20,0.1)',
-            borderRadius: '10px',
-            padding: '1.1rem 1.35rem',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.4)',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem', marginBottom: '0.2rem' }}>
-              <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#ff5f56' }} />
-                <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#ffbd2e' }} />
-                <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#27c93f' }} />
-                <span style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.25)', marginLeft: '0.35rem' }}>decryptor.sh</span>
-              </div>
-              <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent-green)' }}>
-                {count}%
-              </span>
-            </div>
-            
-            <div style={{ 
-              fontSize: '0.74rem', 
-              color: 'var(--accent-green)', 
-              minHeight: '1.5em', 
-              lineHeight: '1.5',
-              textShadow: '0 0 8px rgba(57,255,20,0.2)',
-            }}>
-              {consoleLine}
-            </div>
-          </div>
-
-        </motion.div>
+        </div>
       )}
     </AnimatePresence>
   );
