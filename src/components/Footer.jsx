@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from 'react-icons/fa';
 import AppleEmoji from './AppleEmoji';
 import JailbreakText from './JailbreakText';
 
@@ -192,6 +192,28 @@ export default function Footer() {
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'; }}
                 >
                   <FaLinkedin /> --linkedin
+                </a>
+                <a
+                  href="https://www.instagram.com/zeyrox._.kid?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    padding: '0.45rem 0.85rem',
+                    borderRadius: '8px',
+                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    fontSize: '0.76rem',
+                    transition: 'all 0.22s ease',
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent-green)'; e.currentTarget.style.boxShadow = '0 0 15px rgba(57, 255, 20, 0.2)'; e.currentTarget.style.background = 'rgba(57, 255, 20, 0.03)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'; }}
+                >
+                  <FaInstagram /> --instagram
                 </a>
                 <a
                   href="mailto:iamraghul18@gmail.com"

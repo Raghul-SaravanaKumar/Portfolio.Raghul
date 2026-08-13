@@ -33,7 +33,7 @@ const SOCIALS = [
     id: 'contact-instagram',
     label: 'Instagram',
     icon: <FaInstagram />,
-    href: 'https://www.instagram.com/rex_.oxx',
+    href: 'https://www.instagram.com/zeyrox._.kid?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
     color: '#e1306c',
   },
 ];
