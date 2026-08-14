@@ -26,6 +26,8 @@ import {
   SiSqlite,
   SiC,
   SiApachekafka,
+  SiSupabase,
+  SiCloudflare,
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 import { FaJava, FaCss3Alt, FaTools } from 'react-icons/fa';
@@ -69,6 +71,7 @@ const CATEGORIES = [
       { name: 'MySQL', icon: <SiMysql />, color: '#4479A1' },
       { name: 'SQLite', icon: <SiSqlite />, color: '#003b57' },
       { name: 'Firebase', icon: <SiFirebase />, color: '#FFCA28' },
+      { name: 'Supabase', icon: <SiSupabase />, color: '#3ecf8e' },
     ],
   },
   {
@@ -93,6 +96,7 @@ const CATEGORIES = [
       { name: 'Railway', icon: <SiRailway />, color: '#f26961' },
       { name: 'Vercel', icon: <SiVercel />, color: '#00c7b7' },
       { name: 'Netlify', icon: <SiNetlify />, color: '#2366d1' },
+      { name: 'Cloudflare', icon: <SiCloudflare />, color: '#f38020' },
     ],
   },
 ];
