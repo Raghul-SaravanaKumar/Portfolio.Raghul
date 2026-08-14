@@ -194,7 +194,13 @@ export default function Skills() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <motion.span
-                      style={{ color: item.color, display: 'inline-block' }}
+                      style={{ 
+                        color: item.color, 
+                        display: 'inline-flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center',
+                        transformOrigin: 'center center' 
+                      }}
                       animate={item.name === 'React' ? { rotate: 360 } : {}}
                       transition={item.name === 'React' ? { duration: 8, repeat: Infinity, ease: 'linear' } : {}}
                     >
