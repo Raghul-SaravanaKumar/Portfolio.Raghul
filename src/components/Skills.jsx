@@ -25,6 +25,7 @@ import {
   SiBootstrap,
   SiSqlite,
   SiC,
+  SiApachekafka,
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 import { FaJava, FaCss3Alt, FaTools } from 'react-icons/fa';
@@ -55,6 +56,7 @@ const CATEGORIES = [
       { name: 'Flask', icon: <SiFlask />, color: '#aaaaaa' },
       { name: 'Spring Boot', icon: <SiSpringboot />, color: '#6db33f' },
       { name: 'FastAPI', icon: <SiFastapi />, color: '#009688' },
+      { name: 'Apache Kafka', icon: <SiApachekafka />, color: '#040408' },
     ],
   },
   {
