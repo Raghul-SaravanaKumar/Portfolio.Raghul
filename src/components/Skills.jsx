@@ -194,9 +194,9 @@ export default function Skills() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <motion.span
-                      style={{ color: item.color }}
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 8, repeat: Infinity, ease: 'linear', delay: badgeIdx * 0.4 }}
+                      style={{ color: item.color, display: 'inline-block' }}
+                      animate={item.name === 'React' ? { rotate: 360 } : {}}
+                      transition={item.name === 'React' ? { duration: 8, repeat: Infinity, ease: 'linear' } : {}}
                     >
                       {item.icon}
                     </motion.span>
