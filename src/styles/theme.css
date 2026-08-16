@@ -160,11 +160,9 @@ body.light-mode .navbar.scrolled {
 }
 
 .logo-badge {
-  background: linear-gradient(135deg, var(--accent-purple-light), var(--accent-purple)) !important;
-  color: #050505 !important;
-  border-radius: 8px !important;
-  font-weight: 900 !important;
-  box-shadow: var(--shadow-glow) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 .navbar-links a:hover,

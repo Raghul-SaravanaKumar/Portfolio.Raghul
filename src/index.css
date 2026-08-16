@@ -338,20 +338,9 @@ ul { list-style: none; }
 .logo-badge {
   width: 38px;
   height: 38px;
-  border-radius: 11px;
-  background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-dark));
+  background: transparent;
   display: grid;
   place-items: center;
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: #fff;
-  box-shadow: 0 0 20px rgba(157, 116, 255, 0.45);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.navbar-logo:hover .logo-badge {
-  transform: rotate(-6deg) scale(1.08);
-  box-shadow: 0 0 32px rgba(157, 116, 255, 0.7);
 }
 
 .navbar-links {
@@ -2745,8 +2734,8 @@ section:has(.section-title:hover) .section-title::after { width: 80%; }
 
 /* ── Navbar logo pulse ── */
 @keyframes logoPulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(157, 116, 255, 0.45); }
-  50%       { box-shadow: 0 0 36px rgba(157, 116, 255, 0.75); }
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(252, 192, 33, 0.45)); }
+  50%       { filter: drop-shadow(0 0 8px rgba(252, 192, 33, 0.8)); }
 }
 .logo-badge {
   animation: logoPulse 3s ease-in-out infinite;

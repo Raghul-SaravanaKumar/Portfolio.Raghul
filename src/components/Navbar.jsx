@@ -5,6 +5,7 @@ const links = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Certifications', href: '#certifications' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -22,13 +23,23 @@ export default function Navbar() {
       setScrolled(scrollTop > 40);
 
       // Active section detection
-      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.getBoundingClientRect().top <= 100) {
-          setActive(`#${sections[i]}`);
-          break;
+      const sections = ['home', 'about', 'skills', 'projects', 'certifications', 'contact'];
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+
+      if (isAtBottom) {
+        setActive('#contact');
+      } else {
+        let currentSection = '#home';
+        for (const section of sections) {
+          const el = document.getElementById(section);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 200) {
+              currentSection = `#${section}`;
+            }
+          }
         }
+        setActive(currentSection);
       }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
