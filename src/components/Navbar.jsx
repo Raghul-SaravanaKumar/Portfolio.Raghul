@@ -66,7 +66,9 @@ export default function Navbar() {
             tabIndex={0}
             onKeyDown={(e) => e.key === 'Enter' && window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <div className="logo-badge">RS</div>
+            <div className="logo-badge">
+              <img src="/logo.png" alt="R Logo" style={{ width: '75%', height: '75%', objectFit: 'contain' }} />
+            </div>
             <span>Raghul S</span>
           </div>
 
