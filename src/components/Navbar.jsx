@@ -21,26 +21,24 @@ export default function Navbar() {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(docHeight > 0 ? scrollTop / docHeight : 0);
       setScrolled(scrollTop > 40);
-
       // Active section detection
       const sections = ['home', 'about', 'skills', 'projects', 'certifications', 'contact'];
-      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+      let currentSection = '#home';
+      let minDistance = Infinity;
 
-      if (isAtBottom) {
-        setActive('#contact');
-      } else {
-        let currentSection = '#home';
-        for (const section of sections) {
-          const el = document.getElementById(section);
-          if (el) {
-            const rect = el.getBoundingClientRect();
-            if (rect.top <= 200) {
-              currentSection = `#${section}`;
-            }
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          // Find the section closest to the top of the viewport (offset by 80px for the navbar)
+          const distance = Math.abs(rect.top - 80);
+          if (distance < minDistance) {
+            minDistance = distance;
+            currentSection = `#${section}`;
           }
         }
-        setActive(currentSection);
       }
+      setActive(currentSection);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
